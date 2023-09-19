@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button id="displaygenre" onclick="fetchAndDisplayApiData()">Display Genre</button>
+    <div id="apiResponse">
+        <p>Music Genre:</p>
+        <pre id="responseText"></pre>
+    </div>
+
+    <script>
+        // Function to fetch data from the API and display it
+        function fetchAndDisplayApiData() {
+            fetch('https://binaryjazz.us/wp-json/genrenator/v1/genre/')
+                .then(response => response.json())
+                .then(data => {
+                    // Update the response text
+                    const responseTextElement = document.querySelector('#responseText');
+                    responseTextElement.textContent = JSON.stringify(data, null, 2);
+                })
+                .catch(error => {
+                    console.error('Error fetching data:', error);
+                });
+        }
+
+        // Call the function to fetch and display the API response when the page loads
+       
+    </script>
+</body>
+</html>

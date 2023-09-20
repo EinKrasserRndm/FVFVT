@@ -11,7 +11,6 @@
         <p>Music Genre:</p>
         <pre id="responseText"></pre>
     </div>
-
     <script>
         function fetchAndDisplayApiData() {
             fetch('https://binaryjazz.us/wp-json/genrenator/v1/genre/')
@@ -24,9 +23,6 @@
                     console.error('Error fetching data:', error);
                 });
         }
-
-        // Call the function to fetch and display the API response when the page loads
-       
     </script>
 </body>
 </html>

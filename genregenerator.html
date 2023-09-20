@@ -13,12 +13,10 @@
     </div>
 
     <script>
-        // Function to fetch data from the API and display it
         function fetchAndDisplayApiData() {
             fetch('https://binaryjazz.us/wp-json/genrenator/v1/genre/')
                 .then(response => response.json())
                 .then(data => {
-                    // Update the response text
                     const responseTextElement = document.querySelector('#responseText');
                     responseTextElement.textContent = JSON.stringify(data, null, 2);
                 })

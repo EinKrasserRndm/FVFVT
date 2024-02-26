@@ -1,0 +1,13 @@
+body {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    background-color: violet;
+    text-align: center;
+}
+* {
+    margin: 0.4em auto;
+}
+#ticketAusgabe{
+    background-color: aqua;
+}

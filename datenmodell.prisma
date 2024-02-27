@@ -1,0 +1,27 @@
+datasource db {
+    provider = "postgresql"             //Datenbankprovider einfügen
+    url      = env("DATABASE_URL")      //Link zur Datenbank einfügen
+  }
+  
+  generator client {
+    provider = "prisma-client-js"
+  }
+  
+ model Benutzer {
+    BenutzerID  String @id @default(cuid())
+    Benutzername    String
+    Passwort    String
+    LayoutID    String 
+ }
+ model Termine {
+    TerminID    String @id @default(cuid())
+    BenutzerID  String
+    Terminname  String
+    Datum   DateTime
+    Info    String
+ }
+ model Layout {
+    LayoutID    String @id @default(cuid())
+    Name    String
+    CSSCode String
+ }

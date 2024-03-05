@@ -1,5 +1,5 @@
 datasource db {
-    provider = "postgresql"             //Datenbankprovider einfügen
+    provider = "mysql"             //Datenbankprovider einfügen
     url      = env("DATABASE_URL")      //Link zur Datenbank einfügen
   }
   
@@ -15,7 +15,8 @@ datasource db {
  }
  model Termine {
     TerminID    String @id @default(cuid())
-    BenutzerID  String
+    BId  String
+    Benutzer   Benutzer @relation(fields: [BId], references: [BenutzerID])
     Terminname  String
     Datum   DateTime
     Info    String
@@ -23,5 +24,10 @@ datasource db {
  model Layout {
     LayoutID    String @id @default(cuid())
     Name    String
+    Benutzer   Benutzer @relation(fields: [BId], references: [BenutzerID])
+    BId String
     CSSCode String
  }
+
+
+ //dsdsdww

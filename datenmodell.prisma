@@ -1,5 +1,5 @@
 datasource db {
-    provider = "mysql"             //Datenbankprovider einfügen
+    provider = "sqlite"             //Datenbankprovider einfügen
     url      = env("DATABASE_URL")      //Link zur Datenbank einfügen
   }
   
@@ -9,15 +9,17 @@ datasource db {
   
  model Benutzer {
     BenutzerID  String @id @default(cuid())
-    Benutzername    String
-    Passwort    String
+    Name String 
+    Email String
+    Passwort String 
     LayoutID    String 
  }
  model Termine {
     TerminID    String @id @default(cuid())
     BId  String
-    Benutzer   Benutzer @relation(fields: [BId], references: [BenutzerID])
+    benutzer  Benutzer @relation(fields: [BId], references: [BenutzerID])
     Terminname  String
+    Typ  String
     Datum   DateTime
     Info    String
  }

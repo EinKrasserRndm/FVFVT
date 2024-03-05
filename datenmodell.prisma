@@ -1,0 +1,33 @@
+datasource db {
+    provider = "mysql"             //Datenbankprovider einfügen
+    url      = env("DATABASE_URL")      //Link zur Datenbank einfügen
+  }
+  
+  generator client {
+    provider = "prisma-client-js"
+  }
+  
+ model Benutzer {
+    BenutzerID  String @id @default(cuid())
+    Benutzername    String
+    Passwort    String
+    LayoutID    String 
+ }
+ model Termine {
+    TerminID    String @id @default(cuid())
+    BId  String
+    Benutzer   Benutzer @relation(fields: [BId], references: [BenutzerID])
+    Terminname  String
+    Datum   DateTime
+    Info    String
+ }
+ model Layout {
+    LayoutID    String @id @default(cuid())
+    Name    String
+    Benutzer   Benutzer @relation(fields: [BId], references: [BenutzerID])
+    BId String
+    CSSCode String
+ }
+
+
+ //dsdsdww

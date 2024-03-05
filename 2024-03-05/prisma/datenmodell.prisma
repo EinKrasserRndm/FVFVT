@@ -1,0 +1,33 @@
+datasource db {
+    provider = "sqlite"             //Datenbankprovider einfügen
+    url      = env("DATABASE_URL")      //Link zur Datenbank einfügen
+  }
+  
+  generator client {
+    provider = "prisma-client-js"
+  }
+  
+ model Benutzer {
+    id  String @id @default(cuid())
+    Name String 
+    Email String
+    Passwort String 
+    layouts Layout[]
+    termine Termin[]
+ }
+ model Termin {
+    id   String @id @default(cuid())
+    name  String
+    Typ  String
+    von  DateTime
+    bis DateTime
+    Benutzer   Benutzer? @relation(fields:[benutzerId], references: [id])
+    benutzerId String
+    Info    String
+ }
+ model Layout {
+    id    String @id @default(cuid())
+    name    String
+    CSSCode String
+    Benutzer Benutzer[]
+ }

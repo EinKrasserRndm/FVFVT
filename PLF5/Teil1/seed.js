@@ -4,28 +4,27 @@ const prisma = new PrismaClient();
 
 
 async function seed() {
-    for (i = 0; i > 5; i++) {
-        const Zoo = await prisma.Zoo.create({
-            land: faker.location.country,
-            stadt: faker.location.city,
-            adresse: faker.location.streetAddress,
-            baujahr: faker.number.int({ max: 2024 }),
+    for (let i = 0; i < 5; i++) {
+        const zoo = await prisma.zoo.create({
+            data: {
+                land: faker.location.country(),
+                stadt: faker.location.city(),
+                adresse: faker.address.streetAddress(),
+                baujahr: faker.datatype.number({ max: 2024 }),
+            },
         });
-    }
 
-    const zoos = await prisma.Zoo.findMany();
-    zoos.forEach(element => {
-        for (i = 0; i > faker.number.int({ min: 2, max: 7 }); i++) {
-            const Abteilung = prisma.Abteilung.create({
-                name: faker.animal.type(),
-                zooid: element,
+        for (let j = 0; j < faker.datatype.number({ min: 2, max: 7 }); j++) {
+            await prisma.abteilung.create({
+                data: {
+                    name: faker.animal.type(),
+                    zooid: zoo.id,
+                },
             });
         }
-    });
-    const abteilung = await prisma.abteilung.findMany();
-
-
-    const Mitarbeiter = prisma.Mitarbeiter.create({
-        name: faker.person.name,
-    });
+    }
 }
+seed()
+    .then ((rw) => console.log('seeding done', rw));
+    
+

@@ -1,0 +1,18 @@
+{
+    "name": "plf_prisma_seed_select",
+    "version": "1.0.1",
+    "description": "## Thema Datenmodellierung, Seeding und Queries",
+    "main": "seed.js",
+    "scripts": {
+        "seed-dev": "node --inspect seed.js",
+        "query-dev": "node --inspect query.js"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "dependencies": {
+        "@faker-js/faker": "^8.4.1",
+        "@prisma/client": "^5.13.0",
+        "prisma": "^5.13.0"
+    }
+}

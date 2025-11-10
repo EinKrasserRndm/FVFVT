@@ -30,7 +30,7 @@ model Type {
 model Category {
     id         String     @id @default(cuid())
     name       String     @unique
-    opentdb_id Int        @unique
+    opentdb_id Int?        @unique
     question   Question[]
 }
 
